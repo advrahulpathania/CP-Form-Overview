@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBBI CP Forms – Simplified CIRP Compliance</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #003366, #00A0B0);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        h2 {
+            color: #003366;
+            border-bottom: 3px solid #00A0B0;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        th {
+            background: #003366;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background: #f9fbfc;
+        }
+        .highlight {
+            background: #e6f7ff;
+            padding: 15px;
+            border-left: 5px solid #00A0B0;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .step {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #00A0B0;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            line-height: 40px;
+            margin-bottom: 10px;
+        }
+        .penalty {
+            background: #fff0f0;
+            border: 2px solid #ff4d4d;
+            color: #a00;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #003366;
+            color: white;
+            margin-top: 50px;
+        }
+        a {
+            color: #00A0B0;
+            text-decoration: underline;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .info-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background: #00A0B0;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            table, th, td { font-size: 1rem; }
+            .modal-content { width: 95%; margin: 20% auto; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header-section">
+        <h1>IBBI CP Forms</h1>
+        <p style="font-size:1.5rem; margin:10px 0;">Simplified CIRP Monitoring Framework</p>
+        <p style="font-size:1.2rem;">From 9 Old Forms → 5 Streamlined Forms | Effective June 1, 2025</p>
+        <div class="info-icon" onclick="openModal('header-modal')">i</div>
+    </header>
+    <div class="container">
+        <section id="why-change">
+            <h2>Why the Change Was Needed</h2>
+            <ul>
+                <li>Old system had <strong>9 forms</strong> (IP-1 + CIRP 1–8)</li>
+                <li>Significant redundancy and overlapping data requirements</li>
+                <li>Multiple unpredictable event-driven deadlines</li>
+                <li>High administrative burden on Insolvency Professionals (IPs)</li>
+            </ul>
+            <div class="highlight">
+                The new CP Forms reduce redundancy, introduce predictable monthly reporting, and enable auto-population of data on IBBI's digital platform for better efficiency.
+            </div>
+            <div class="info-icon" onclick="openModal('why-modal')">i</div>
+        </section>
+        <section id="forms-mapping">
+            <h2>New CP Forms: Purpose and Mapping</h2>
+            <p>The revised framework consolidates information into stage-specific and monthly updates, ensuring timely and standardized data for effective IBBI oversight while easing compliance for IPs.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>New CP Form</th>
+                        <th>CIRP Phase Covered</th>
+                        <th>Purpose – Why We Need to File This Form</th>
+                        <th>Replaces Old Forms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CP-1</strong></td>
+                        <td>Commencement → CoC Constitution</td>
+                        <td>To provide early-stage details (public announcement, claims received, CoC formation) for IBBI to monitor timely progress and creditor participation from the start.</td>
+                        <td>IP-1, CIRP-1, CIRP-2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CP-2</strong></td>
+                        <td>CoC Constitution → RFRP Issuance</td>
+                        <td>To report preparation of Information Memorandum, EoI received, and valuer appointments – enabling oversight on resolution applicant shortlisting.</td>
+                        <td>CIRP-3, CIRP-4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CP-3A</strong></td>
+                        <td>Filing of Resolution/Liquidation Plan with AA</td>
+                        <td>To inform IBBI immediately when a resolution plan or liquidation application is submitted to NCLT for approval tracking.</td>
+                        <td>Part of CIRP-5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CP-3B</strong></td>
+                        <td>AA Order on Plan/Liquidation</td>
+                        <td>To update on NCLT's approval/rejection of plan or initiation of liquidation – critical for final outcome monitoring.</td>
+                        <td>Part of CIRP-6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CP-4</strong></td>
+                        <td>Avoidance Transactions</td>
+                        <td>To report preferential, undervalued, fraudulent, or extortionate transactions identified – ensuring recovery efforts for creditor benefit are tracked.</td>
+                        <td>Part of CIRP-7</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CP-5</strong></td>
+                        <td><strong>Monthly Status Update</strong></td>
+                        <td>To provide ongoing updates on CoC meetings, litigations, expenses, delays, and overall progress – allowing real-time IBBI monitoring of every active CIRP.</td>
+                        <td>New recurring requirement</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight">Over 44% reduction in forms → Major relief for IPs with better data quality for regulators!</div>
+            <div class="info-icon" onclick="openModal('forms-modal')">i</div>
+        </section>
+        <section id="deadlines">
+            <h2>Filing Deadlines – Predictable and Simplified</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Form</th>
+                        <th>Subject</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CP-5</strong></td>
+                        <td>Monthly Status Update</td>
+                        <td><strong>10th of every month</strong> (for the previous month)</td>
+                    </tr>
+                    <tr>
+                        <td>CP-1, CP-2, CP-3A, CP-4</td>
+                        <td>Stage-specific events</td>
+                        <td>10th of the subsequent month after the triggering event</td>
+                    </tr>
+                    <tr>
+                        <td>CP-3B</td>
+                        <td>AA Order/Outcome</td>
+                        <td>Within 7 days of knowledge of NCLT order</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight">Key recurring reminder: <strong>Submit CP-5 by the 10th of every month</strong> (Note: No penalties for delays in July–September 2025 transition period)</div>
+            <div class="info-icon" onclick="openModal('deadlines-modal')">i</div>
+        </section>
+        <section class="penalty" id="penalties">
+            <h2>Penalties for Non-Compliance</h2>
+            <ul>
+                <li><strong>₹500 per form</strong> for each calendar month of delay (or part thereof)</li>
+                <li>Example: 3 months delay = ₹1,500 per form</li>
+                <li>Repeated delays may lead to warnings, disciplinary proceedings, or impact on renewal of Authorization for Assignment (AFA)</li>
+            </ul>
+            <p><strong>Transition Grace:</strong> No penalties for delayed filings during July–September 2025.</p>
+            <div class="info-icon" onclick="openModal('penalties-modal')">i</div>
+        </section>
+        <section id="benefits">
+            <h2>Key Benefits of the New Framework</h2>
+            <ul>
+                <li>Substantially reduced compliance burden and redundancy for Insolvency Professionals</li>
+                <li>Predictable monthly calendar replacing scattered event-based deadlines</li>
+                <li>Auto-population of data on IBBI's digital platform for faster filing</li>
+                <li>Real-time, standardized high-quality data for effective IBBI monitoring</li>
+                <li>Greater transparency and discipline in the CIRP process</li>
+            </ul>
+            <div class="info-icon" onclick="openModal('benefits-modal')">i</div>
+        </section>
+        <section id="filing-steps">
+            <h2>Now, Let's See How to File the CP Forms</h2>
+            <p>All filings are mandatory on IBBI's dedicated electronic platform (accessible via <a href="https://www.ibbi.gov.in" target="_blank">www.ibbi.gov.in</a>) using your unique credentials, DSC, or e-Sign.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Log in to the IBBI Electronic Platform using your credentials</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Select the relevant Corporate Debtor / CIRP case</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Choose the appropriate CP Form; benefit from auto-populated fields</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <p>Enter required data, attach supporting documents, and review thoroughly</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <p>Submit the form using DSC or e-Sign</p>
+                </div>
+            </div>
+            <div class="highlight">
+                <strong>Pro Tips:</strong><br>
+                • For any platform issues, contact <a href="mailto:support.form@ibbi.gov.in">support.form@ibbi.gov.in</a>.<br>
+                • Always ensure accuracy – IPs are responsible for complete and correct submissions.
+            </div>
+            <div class="info-icon" onclick="openModal('filing-modal')">i</div>
+        </section>
+        <section id="more-info">
+            <h2>For More Detailed Information</h2>
+            <p>This is a quick reference guide. For in-depth details, including step-by-step guidance on filling each CP Form, reproductions of key sections from Regulation 40B, indicative form templates, and comprehensive FAQs, please visit the official sources:</p>
+            <ul>
+                <li><a href="https://ibbi.gov.in/uploads/whatsnew/61b8f4eb234c5836f5078e77198b760b.pdf" target="_blank">IBBI Circular No. IBBI/CIRP/85/2025 dated 26th May 2025 – Launch of Revised Forms (includes indicative templates)</a></li>
+                <li><a href="https://ibbi.gov.in/uploads/faqs/FAQ on CIRP Forms 26052025.pdf" target="_blank">Official FAQs on Revised CIRP Forms Framework (dated 26.05.2025)</a></li>
+                <li><a href="https://www.ibbi.gov.in" target="_blank">IBBI Official Website – All Notifications, Circulars & Legal Framework</a></li>
+            </ul>
+            <div class="highlight">Always cross-verify with the latest official sources on the IBBI website for any updates.</div>
+            <div class="info-icon" onclick="openModal('more-modal')">i</div>
+        </section>
+    </div>
+    <footer>
+        <p>Quick Reference Guide for IBBI CP Forms under IBC</p>
+    </footer>
+
+    <!-- Modals for each section -->
+    <div id="header-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('header-modal')">&times;</span>
+            <h2>Overview of IBBI CP Forms</h2>
+            <p>This page provides a simplified overview of the new CP Forms framework introduced by IBBI effective June 1, 2025. It consolidates 9 old forms into 5 streamlined ones, introduces monthly reporting via CP-5, and aims to reduce compliance burden on Insolvency Professionals while improving regulatory oversight.</p>
+            <p>Key change: Shift from event-driven to predictable monthly deadlines with digital auto-population.</p>
+        </div>
+    </div>
+    <div id="why-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('why-modal')">&times;</span>
+            <h2>Detailed Explanation: Why the Change Was Needed</h2>
+            <p>The previous system required filing 9 separate forms at unpredictable times tied to specific events, leading to redundancy (same data entered multiple times) and high administrative load. The new system eliminates overlaps, standardizes reporting, and uses technology for efficiency.</p>
+        </div>
+    </div>
+    <div id="forms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('forms-modal')">&times;</span>
+            <h2>Detailed Explanation: New CP Forms</h2>
+            <p>Each form covers specific phases and requires targeted information to enable stage-wise monitoring. Refer to the official circular for exact data fields and templates.</p>
+            <p>CP-5 is the cornerstone – a comprehensive monthly snapshot of the entire CIRP.</p>
+        </div>
+    </div>
+    <div id="deadlines-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('deadlines-modal')">&times;</span>
+            <h2>Detailed Explanation: Filing Deadlines</h2>
+            <p>Most forms are due by the 10th of the next month, making compliance predictable. CP-3B is faster due to its importance in tracking outcomes.</p>
+            <p>During transition (July-Sep 2025), no penalties apply.</p>
+        </div>
+    </div>
+    <div id="penalties-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('penalties-modal')">&times;</span>
+            <h2>Detailed Explanation: Penalties</h2>
+            <p>Regulation 40B imposes ₹500 per month per delayed form. Cumulative delays increase costs quickly. Consistent non-compliance can trigger regulatory action.</p>
+            <p>Grace period: No fees for July-September 2025 delays.</p>
+        </div>
+    </div>
+    <div id="benefits-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('benefits-modal')">&times;</span>
+            <h2>Detailed Explanation: Key Benefits</h2>
+            <p>IPs save time; IBBI gets better data for supervision; overall CIRP becomes more transparent and efficient.</p>
+        </div>
+    </div>
+    <div id="filing-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('filing-modal')">&times;</span>
+            <h2>Detailed Explanation: How to File</h2>
+            <p>Filings are fully digital on IBBI portal. Auto-population reduces manual entry. Always double-check before final submission with DSC/e-Sign.</p>
+            <p>Contact support for technical help.</p>
+        </div>
+    </div>
+    <div id="more-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('more-modal')">&times;</span>
+            <h2>Detailed Explanation: More Information</h2>
+            <p>The links provided lead directly to the official circular (with templates) and FAQs. These are verified working links to the PDFs on the IBBI website. Click them to download the complete documents for regulatory text, form structures, and detailed guidance.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
